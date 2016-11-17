@@ -14,11 +14,13 @@ import javax.validation.constraints.NotNull;
 public class HelloLog {
 	
 	private String name;
+	private String language;
 	private Date timestamp;
 	private int uid;
 	
-	public HelloLog(String name) {
+	public HelloLog(String name, String language) {
 		this.name = name;
+		this.language = language;
 		timestamp = new Date();
 	}
 	
@@ -43,6 +45,15 @@ public class HelloLog {
 	
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	@Column(name = "language")
+	public String getLanguage() {
+		return language;
+	}
+	
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 	
 	@NotNull

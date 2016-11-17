@@ -20,6 +20,11 @@ public class HelloController {
 	@Autowired
 	private HelloLogDao helloLogDao;
 	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String index() {
+		return "redirect:/hello";
+	}
+	
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	public String helloForm() {
 		return "helloform";
@@ -35,7 +40,7 @@ public class HelloController {
 		if (name == null || name == "")
 			name = "World";
 		
-		HelloLog helloLog = new HelloLog(name);
+		HelloLog helloLog = new HelloLog(name, language);
 		helloLogDao.save(helloLog);
 		
 		model.addAttribute("message", HelloMessage.getMessage(name, language));
